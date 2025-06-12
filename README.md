@@ -56,7 +56,8 @@ _Notes_:
 
 ## 🔧 Examples
 ### A priori
-Let's assume that you need to collect your sample and you're interested in one particular path of your PLS-SEM, whose effect size you estimate to be around 0.5. In this case, you would conduct an _a priori_ power analysis to assess the minimum required sample size to observe such an effect with 80% power.
+Let's assume that you need to collect your sample and you're interested in one particular path of your PLS-SEM, whose effect size you estimate to be around 0.5.
+In this case, you would conduct an _a priori_ power analysis to assess the minimum required sample size to observe such an effect with 80% power.
 
 All you need to run is
 ```r
@@ -73,6 +74,29 @@ And you'll receive this message
  ```r
 To detect an effect of 0.5 with 80% power at alpha = 0.05 you need at least 25 observations.
  ```
+
+### Sensitivity
+Let's now assume that you have already collected your sample, prior to any power analysis (Aargh! Naughty researcher!). You have painstakingly gathered 77 participants, and you're starting to wonder what the smallest effect size is that you could detect with 80% power.
+In this case, you would conduct a _sensitivity_ power analysis to assess the Minimum Detectable Effect Size (MDES) with 80% power given your sample size.
+
+All you need to run is
+```r
+pls_sem_power_graph(method = "sensitivity", N = 77, alpha = 0.05)
+```
+This graph will appear, telling you that you can detect effects larger than **0.28** with 80% power 
+![image](https://github.com/user-attachments/assets/3391f06e-1ed5-4fb9-9cd5-0bfbc6f79a2f)
+
+
+Again, if you're rushing and don't really care about the graph, then you simply need to type
+ ```r
+pls_sem_power(method = "sensitivity", N = 77, alpha = 0.05)
+```
+And you'll receive this message
+ ```r
+With N = 77 and alpha = 0.05 you can detect effects as small as 0.28 with 80% power
+ ```
+
+Easy-peasy...isn't it?!
 
 ## 📚 References
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
