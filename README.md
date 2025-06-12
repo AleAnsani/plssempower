@@ -11,8 +11,8 @@ Using the inverse square root method introduced by Kock and Hadaya (2018), this 
 
 - Compute the required sample size for a given effect size (_a priori_)
 - Compute the Minimum Detectable Effect Size (MDES) for a given sample (_sensitivity_)
+- Visualise your results with clear, (slightly) customisable graphs.
 
-Visualise your results with clear, (slightly) customizable graphs
 All in one function. No more guessing. No more excuses.
 
 ## ⚙️ Install from GitHub
@@ -22,6 +22,7 @@ The installation is pretty easy. Make sure to run this code:
 # install plssempower
 devtools::install_github("AleAnsani/plssempower")
  ```
+What?! You still don't use R?! Ok, ok, I can get that...no biggie, we're inclusive here. Make sure you scroll down and you'll find a surprise just for you...
 
 ## 🚀 What does this package do?
 `plssempower` is an R package for computing power and sensitivity analyses in Partial Least Squares Structural Equation Modelling (PLS-SEM) using the inverse square root method.
@@ -34,7 +35,7 @@ This package provides two simple functions:
 ## 📊 Methodology
 
 The package is based on the **inverse square root method**, introduced by Kock & Hadaya (2018), which is a practical approach for determining sample sizes in PLS-SEM. The key formula used is:
-N = (pα / pmin)^2
+_N_ = (pα / pmin)²
 
 
 Where:
@@ -57,13 +58,14 @@ pls_sem_power_graph(method = "a priori", MDES = 0.2, alpha = 0.05)
 pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05)
 ```
 _Notes_:
-- The alpha argument accepts only three values: 0.01, 0.05, and 0.10.
+- The `alpha` argument accepts only three values: 0.01, 0.05, and 0.10.
 - When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts.
 
 ## 📜 Examples
 ### A priori
 Let's assume that you need to collect your sample and you're interested in one particular path of your PLS-SEM, whose effect size you estimate to be around 0.5.
-In this case, you would conduct an _a priori_ power analysis to assess the minimum required sample size to observe such an effect with 80% power.
+
+In this case, you would conduct an **_a priori_ power analysis** to assess the minimum required sample size to observe such an effect with 80% power.
 
 All you need to run is
 ```r
@@ -83,12 +85,15 @@ To detect an effect of 0.5 with 80% power at alpha = 0.05 you need at least 25 o
 
 ### Sensitivity
 Let's now assume that you have already collected your sample, prior to any power analysis (Aargh! Naughty researcher!). You have painstakingly gathered 77 participants, and you're starting to wonder what the smallest effect size is that you could detect with 80% power.
-In this case, you would conduct a _sensitivity_ power analysis to assess the Minimum Detectable Effect Size (MDES) with 80% power given your sample size.
+
+In this case, you would conduct a **_sensitivity_ power analysis** to assess the Minimum Detectable Effect Size (MDES) with 80% power given your sample size.
 
 All you need to run is
 ```r
 pls_sem_power_graph(method = "sensitivity", N = 77, alpha = 0.05)
 ```
+Note that the function works identically; you simply need to substitute the `method` (i.e., `sensitivity` instead of `a priori`) and provide the `N` argument instead of `MDES`.
+
 This graph will appear, telling you that you can detect effects larger than **0.28** with 80% power 
 ![image](https://github.com/user-attachments/assets/3391f06e-1ed5-4fb9-9cd5-0bfbc6f79a2f)
 
@@ -102,7 +107,16 @@ And you'll receive this message
 With N = 77 and alpha = 0.05 you can detect effects as small as 0.28 with 80% power
  ```
 
-Easy-peasy...isn't it?!
+Easy-peasy...isn't it?! And it's all for free!
+The only thing I ask for is for the package to be cited properly, for instance like this:
+
+Ansani, A. (2025). _PLS-SEM-power_ (Version 1.0) [R package / Shiny App].
+
+
+## 🌐 Shiny App
+Woo! What was that?! I was about to forget! `plssempower` is also available on the internet as a Shiny App. You don't have to download the R package necessarily. You can just run your PLS-SEM power analyses the old-fashioned point-and-clicky way. Here's the link, have fun! https://aleansani.shinyapps.io/pls-sem-power/
+
+Please note: it might take some time to load on the first access, that's entirely normal.
 
 ## 📚 References
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
@@ -113,4 +127,4 @@ Dong, N., & Maynard, R. (2013). PowerUp!: A Tool for Calculating Minimum Detecta
 
 
 ## 🆘 Help & Troubleshooting
-`plssempower` is obscenely easy. However, we can never rule out things going terribly wrong, can we?! So, should you need some help or, even better, you'd like to suggest some improvements, please feel free to shoot me a message [here](alessandro.a.ansani@jyu.fi).
+Both the `plssempower` R package and the Shiny App are obscenely straightforward. However, we can never rule out things going terribly wrong, can we?! So, should you need some help or, even better, you'd like to suggest some improvements, please feel free to shoot me a message via the issues or discussions tab. My social skills are definitely better than my coding.
