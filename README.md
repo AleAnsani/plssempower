@@ -1,4 +1,20 @@
-# plssempower
+😰 Stressed about sample size in your Partial Least Squares Structural Equation Model?
+Planning a PLS-SEM, but unsure how many participants you need?
+Worried that your expected effect size is small and your sample might be...even smaller?
+Still relying on vague heuristics like the “10-times rule”?
+We’ve all been there. Well, not exactly "all", to be fair...
+
+Say hello to `plssempower`, an R package designed to make power analysis for PLS-SEM models fast, transparent, and reproducible.
+Using the inverse square root method introduced by Kock & Hadaya (2018), this package lets you:
+
+- Compute the required sample size for a given effect size (_a priori_)
+- Compute the Minimum Detectable Effect Size (MDES) for a given sample (_sensitivity_)
+
+Visualise your results with clear, (slightly) customizable graphs
+All in one function. No more guessing. No more excuses.
+
+
+# PLS-SEM-power
 
 An R package for computing power and sensitivity analyses in Partial Least Squares Structural Equation Modelling (PLS-SEM) using the inverse square root method.
 
