@@ -36,7 +36,7 @@ pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05)
 ```
 _Notes_:
 - The alpha argument accepts only three values: 0.01, 0.05, and 0.10.
-- When using `pls_sem_power_graph`, you can set theme = "min" to apply a minimal white background, which may improve readability in certain contexts.
+- When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts.
 
 
 ## 📚 References
