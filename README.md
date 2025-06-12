@@ -54,6 +54,25 @@ _Notes_:
 - The alpha argument accepts only three values: 0.01, 0.05, and 0.10.
 - When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts.
 
+## 🔧 Examples
+### A priori
+Let's assume that you need to collect your sample and you're interested in one particular path of your PLS-SEM, whose effect size you estimate to be around 0.5. In this case, you would conduct an _a priori_ power analysis to assess the minimum required sample size to observe such an effect with 80% power.
+
+All you need to run is
+```r
+pls_sem_power_graph(method = "a priori", MDES = 0.5, alpha = 0.05)
+```
+This graph will appear, clearly showing that you would need at least **25 participants** to observe such an effect with 80% power 
+![image](https://github.com/user-attachments/assets/3f4bd5f6-7cdd-4795-8d3e-ca914e80b3bd)
+
+If you're not interested in the graph, but you just need to have the computation done, then you simply need to run
+ ```r
+pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05)
+```
+And you'll receive this message
+ ```r
+To detect an effect of 0.5 with 80% power at alpha = 0.05 you need at least 25 observations.
+ ```
 
 ## 📚 References
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
