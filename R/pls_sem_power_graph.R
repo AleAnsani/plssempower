@@ -77,3 +77,5 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
     stop("Invalid method. Choose either 'a priori' or 'sensitivity'.")
   }
 }
+
+

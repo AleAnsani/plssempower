@@ -36,7 +36,8 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
     detectable_mdes <- selected_constant / sqrt(N)
     cat("With N =", N,
         "and alpha =", alpha,
-        "you can detect effects as small as", round(detectable_mdes, 2), "\n")
+        "you can detect effects as small as", round(detectable_mdes, 2),
+        "with 80% power\n")
   }
 }
 
