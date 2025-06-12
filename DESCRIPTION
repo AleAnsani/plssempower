@@ -18,3 +18,5 @@ RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
     see
+URL: https://github.com/AleAnsani/plssempower
+BugReports: https://github.com/AleAnsani/plssempower/issues
