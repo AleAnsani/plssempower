@@ -15,7 +15,7 @@ Using the inverse square root method introduced by Kock and Hadaya (2018), this 
 Visualise your results with clear, (slightly) customizable graphs
 All in one function. No more guessing. No more excuses.
 
-## Install from GitHub
+## ⚙️ Install from GitHub
 The installation is pretty easy. Make sure to run this code:
  ```r
 # install.packages("devtools")
@@ -60,7 +60,7 @@ _Notes_:
 - The alpha argument accepts only three values: 0.01, 0.05, and 0.10.
 - When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts.
 
-## 🔧 Examples
+## 📜 Examples
 ### A priori
 Let's assume that you need to collect your sample and you're interested in one particular path of your PLS-SEM, whose effect size you estimate to be around 0.5.
 In this case, you would conduct an _a priori_ power analysis to assess the minimum required sample size to observe such an effect with 80% power.
@@ -112,4 +112,5 @@ Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Stat
 Dong, N., & Maynard, R. (2013). PowerUp!: A Tool for Calculating Minimum Detectable Effect Sizes and Minimum Required Sample Sizes. _Journal of Research on Educational Effectiveness, 6_(1), 24–67.
 
 
-
+## 🆘 Help & Troubleshooting
+`plssempower` is obscenely easy. However, we can never rule out things going terribly wrong, can we?! So, should you need some help or, even better, you'd like to suggest some improvements, please feel free to shoot me a message [here](alessandro.a.ansani@jyu.fi).
