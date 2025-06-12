@@ -36,7 +36,7 @@ pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05)
 ```
 
 
-**## 📚 References**
+## 📚 References
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
 
 Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs. _Evaluation Review, 19_(5), 547–556.
@@ -45,7 +45,7 @@ Dong, N., & Maynard, R. (2013). PowerUp!: A Tool for Calculating Minimum Detecta
 
 
 
-# Install from GitHub
+## Install from GitHub
 devtools::install_github("AleAnsani/plssempower")
 
 
