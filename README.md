@@ -1,11 +1,13 @@
-😰 Stressed about sample size in your Partial Least Squares Structural Equation Model?
+# PLS-SEM-power
+
+Stressed about sample size in your Partial Least Squares Structural Equation Model?
 Planning a PLS-SEM, but unsure how many participants you need?
 Worried that your expected effect size is small and your sample might be...even smaller?
 Still relying on vague heuristics like the “10-times rule”?
 We’ve all been there. Well, not exactly "all", to be fair...
 
 Say hello to `plssempower`, an R package designed to make power analysis for PLS-SEM models fast, transparent, and reproducible.
-Using the inverse square root method introduced by Kock & Hadaya (2018), this package lets you:
+Using the inverse square root method introduced by Kock and Hadaya (2018), this package lets you:
 
 - Compute the required sample size for a given effect size (_a priori_)
 - Compute the Minimum Detectable Effect Size (MDES) for a given sample (_sensitivity_)
@@ -13,12 +15,16 @@ Using the inverse square root method introduced by Kock & Hadaya (2018), this pa
 Visualise your results with clear, (slightly) customizable graphs
 All in one function. No more guessing. No more excuses.
 
-
-# PLS-SEM-power
-
-An R package for computing power and sensitivity analyses in Partial Least Squares Structural Equation Modelling (PLS-SEM) using the inverse square root method.
+## Install from GitHub
+The installation is pretty easy. Make sure to run this code:
+ ```r
+# install.packages("devtools")
+# install plssempower
+devtools::install_github("AleAnsani/plssempower")
+ ```
 
 ## 🚀 What does this package do?
+`plssempower` is an R package for computing power and sensitivity analyses in Partial Least Squares Structural Equation Modelling (PLS-SEM) using the inverse square root method.
 
 This package provides two simple functions:
 
@@ -104,11 +110,6 @@ Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The 
 Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs. _Evaluation Review, 19_(5), 547–556.
 
 Dong, N., & Maynard, R. (2013). PowerUp!: A Tool for Calculating Minimum Detectable Effect Sizes and Minimum Required Sample Sizes. _Journal of Research on Educational Effectiveness, 6_(1), 24–67.
-
-
-
-## Install from GitHub
-devtools::install_github("AleAnsani/plssempower")
 
 
 
