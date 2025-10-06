@@ -58,10 +58,10 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
     data <- data.frame(SampleSize = sample_size_values, MDES = mdes_values)
 
     ggplot(data, aes(x = SampleSize, y = MDES)) +
-      geom_line(color = "red") +
-      geom_point(color = "red", size = 2) +
-      geom_vline(xintercept = N, color = "red", linetype = "dotted", size = 1.25) +
-      geom_hline(yintercept = (selected_constant / sqrt(N)), color = "red", linetype = "dotted", size = 1.25) +
+      geom_line(color = "#d55e00") +
+      geom_point(color = "#d55e00", size = 2) +
+      geom_vline(xintercept = N, color = "#d55e00", linetype = "dotted", size = 1.25) +
+      geom_hline(yintercept = (selected_constant / sqrt(N)), color = "#d55e00", linetype = "dotted", size = 1.25) +
       scale_x_continuous(breaks = seq(0, 300, by = 25)) +
       scale_y_continuous(breaks = seq(0, mdes_max, by = break_step_y)) +
       coord_cartesian(xlim = c(0, 300), ylim = c(0, mdes_max)) +
@@ -71,7 +71,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 10, y = mdes_max * 0.9,
                label = paste0("MDES ≈ ", round(selected_constant / sqrt(N), 2)),
-               color = "red", size = 5, hjust = 0)
+               color = "#d55e00", size = 5, hjust = 0)
 
   } else {
     stop("Invalid method. Choose either 'a priori' or 'sensitivity'.")
