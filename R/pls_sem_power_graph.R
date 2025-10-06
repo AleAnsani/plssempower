@@ -46,7 +46,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 0.15, y = ylim_max * 0.9,
                  label = paste0("Sample size ≈ ", round(target_y, 0)),
-                 color = "white", size = 5, hjust = 0)
+                 color = "orange", size = 5, hjust = 0)
 
   } else if (method == "sensitivity") {
     if (is.null(N)) stop("Please provide a value for N.")
@@ -71,7 +71,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 10, y = mdes_max * 0.9,
                label = paste0("MDES ≈ ", round(selected_constant / sqrt(N), 2)),
-               color = "white", size = 5, hjust = 0)
+               color = "red", size = 5, hjust = 0)
 
   } else {
     stop("Invalid method. Choose either 'a priori' or 'sensitivity'.")
