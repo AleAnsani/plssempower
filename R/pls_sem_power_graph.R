@@ -15,7 +15,7 @@
 #' @export
 pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alpha = 0.05, theme = "abyss") {
   # Validate alpha
-  alpha_map <- c("0.01" = 3.168, "0.05" = 2.486, "0.10" = 2.123)
+  alpha_map <- c("0.01" = 3.168, "0.05" = 2.486, "0.1" = 2.123)
   alpha_str <- as.character(alpha)
   if (!(alpha_str %in% names(alpha_map))) {
     stop("alpha must be one of: 0.01, 0.05, 0.10")
@@ -77,5 +77,19 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
     stop("Invalid method. Choose either 'a priori' or 'sensitivity'.")
   }
 }
+
+
+# Push after updates
+#library(usethis)
+#library(devtools)
+
+#devtools::document()
+
+#system('git add .')
+#system('git commit -m "Update: minor edits and sync to GitHub"')
+
+#system("git pull --rebase")
+
+#system("git push")
 
 
