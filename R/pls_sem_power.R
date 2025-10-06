@@ -15,7 +15,7 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
 
   # Validate alpha and map to constants
   alpha <- as.character(alpha)
-  p_values <- c("0.01" = 3.168, "0.05" = 2.486, "0.10" = 2.123)
+  p_values <- c("0.01" = 3.168, "0.05" = 2.486, "0.1" = 2.123)
 
   if (!alpha %in% names(p_values)) {
     stop("alpha must be one of: 0.01, 0.05, or 0.10")
