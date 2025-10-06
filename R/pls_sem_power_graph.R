@@ -80,16 +80,11 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
 
 
 # Push after updates
-#library(usethis)
-#library(devtools)
+git_repo <- "/Users/alansani/Library/CloudStorage/GoogleDrive-alansani@jyu.fi/My Drive/PLS-SEM Shiny App/PLS-SEM Package/plssempower"
 
-#devtools::document()
-
-#system('git add .')
-#system('git commit -m "Update: minor edits and sync to GitHub"')
-
-#system("git pull --rebase")
-
-#system("git push")
-
-
+system(paste("git -C", shQuote(git_repo), "add R/pls_sem_power_graph.R"))
+system(paste("git -C", shQuote(git_repo), "commit -m 'Fix: fixed alpha 0.10 problem'"))
+system(paste("git -C", shQuote(git_repo), "add ."))
+system(paste("git -C", shQuote(git_repo), "commit -m 'Fix: fixed alpha 0.10 problem'"))
+system(paste("git -C", shQuote(git_repo), "pull --rebase"))
+system(paste("git -C", shQuote(git_repo), "push"))
