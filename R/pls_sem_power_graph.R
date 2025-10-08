@@ -33,10 +33,10 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
     data <- data.frame(MDES = mdes_values, SampleSize = sample_size_values)
 
     ggplot(data, aes(x = MDES, y = SampleSize)) +
-      geom_line(color = "orange", size = 1) +
-      geom_point(color = "orange", size = 2) +
-      geom_vline(xintercept = MDES, color = "orange", linetype = "dotted", size = 1.25) +
-      geom_hline(yintercept = target_y, color = "orange", linetype = "dotted", size = 1.25) +
+      geom_line(color = "#f0e442", size = 1) +
+      geom_point(color = "#f0e442", size = 2) +
+      geom_vline(xintercept = MDES, color = "#f0e442", linetype = "dotted", size = 1.25) +
+      geom_hline(yintercept = target_y, color = "#f0e442", linetype = "dotted", size = 1.25) +
       scale_x_continuous(breaks = seq(0.1, 0.8, by = 0.05)) +
       scale_y_continuous(breaks = seq(0, ylim_max, by = break_step)) +
       coord_cartesian(ylim = c(0, ylim_max)) +
@@ -45,8 +45,8 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       chosen_theme +
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 0.15, y = ylim_max * 0.9,
-                 label = paste0("Sample size ≈ ", round(target_y, 0)),
-                 color = "orange", size = 5, hjust = 0)
+                 label = paste0("Sample size ≈ ", ceiling(target_y)),
+                 color = "#f0e442", size = 5, hjust = 0)
 
   } else if (method == "sensitivity") {
     if (is.null(N)) stop("Please provide a value for N.")
