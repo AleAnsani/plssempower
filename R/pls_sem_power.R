@@ -28,7 +28,7 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
     required_N <- (selected_constant / MDES)^2
     cat("To detect an effect of", MDES,
         "with 80% power at alpha =", alpha,
-        "you need at least", round(required_N, 0), "observations.\n")
+        "you need at least", ceiling(required_N), "observations.\n")
   }
 
   if (method == "sensitivity") {
