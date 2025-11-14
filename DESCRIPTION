@@ -17,7 +17,7 @@ Authors@R: c(
       role = "ctb",
       comment = c(ORCID = "0000-0002-2457-424X")
     )
-)
+ )
 Description: This package provides functions and graphical tools to perform
     power analysis and sensitivity analysis for Partial Least Squares Structural
     Equation Models (PLS-SEM). Based on the inverse square root method described
