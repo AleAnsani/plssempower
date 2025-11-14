@@ -14,7 +14,7 @@ Authors@R: c(
       given = "Elena Sofia",
       family = "Rinallo",
       email = "elena.rinallo@uniroma3.it",
-      role = c("ctb", "cph"),
+      role = "ctb",
       comment = c(ORCID = "0000-0002-2457-424X")
     )
 )
@@ -22,14 +22,14 @@ Description: This package provides functions and graphical tools to perform
     power analysis and sensitivity analysis for Partial Least Squares Structural
     Equation Models (PLS-SEM). Based on the inverse square root method described
     by Kock and Hadaya (2018), it allows researchers to estimate required sample
-    sizes or Minimum Detectable Effect Sizes (MDES). A Shiny App performing the same computations is available online at: https://aleansani.shinyapps.io/pls-sem-power/
-License: Creative Commons CC-BY-NC
+    sizes or Minimum Detectable Effect Sizes (MDES). A Shiny App performing the same
+    computations is available online at: https://aleansani.shinyapps.io/pls-sem-power/
+License: CC-BY-NC-4.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
     see
-URL: https://github.com/AleAnsani/plssempower,
-	https://aleansani.shinyapps.io/pls-sem-power/
+URL: https://github.com/AleAnsani/plssempower, https://aleansani.shinyapps.io/pls-sem-power/
 BugReports: https://github.com/AleAnsani/plssempower/issues
