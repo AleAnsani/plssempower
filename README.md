@@ -7,7 +7,7 @@ Still relying on vague heuristics like the “10-times rule”?
 We’ve all been there. Well, not exactly "all", to be fair...
 
 Say hello to `plssempower`, an R package designed to make power analysis for PLS-SEM models fast, transparent, and reproducible.
-Using the inverse square root method introduced by Kock and Hadaya (2018), this package lets you:
+Using the inverse square root method introduced by [Kock and Hadaya (2018)]([url](https://cits.tamiu.edu/kock/pubs/journals/2018/Kock_Hadaya_2018_ISJ_SampleSizePLS.pdf)), this package allows you to:
 
 - Compute the required sample size for a given effect size (_a priori_)
 - Compute the Minimum Detectable Effect Size (MDES) for a given sample (_sensitivity_)
@@ -18,7 +18,7 @@ All in one function. No more guessing. No more excuses.
 ## ⚙️ Install from GitHub
 The installation is pretty easy. Make sure to run this code:
  ```r
-# install.packages("devtools")
+# install.packages("devtools") # run this line if you don't have devtools (you need to remove the first # to do it)
 # install plssempower
 devtools::install_github("AleAnsani/plssempower")
  ```
@@ -29,7 +29,7 @@ What?! You still don't use R?! Ok, ok, I can get that...no biggie, we're inclusi
 
 This package provides two simple functions:
 
-- `pls_sem_power()` – Computes either the **minimum sample size** needed for a given Minimum Detectable Effect Size (MDES), or the **MDES** for a given sample size, based on the formula proposed by Kock & Hadaya (2018).
+- `pls_sem_power()` – Computes either the **minimum sample size** needed for a given Minimum Detectable Effect Size (MDES), or the **MDES** for a given sample size, based on the formula proposed by Kock & Hadaya (2018, equation 5).
 - `pls_sem_power_graph()` – Generates ggplot2 graphs showing the relationship between MDES and sample size, including reference lines for the user’s input.
 
 ## 📊 Methodology
@@ -59,7 +59,7 @@ pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05)
 ```
 _Notes_:
 - The `alpha` argument accepts only three values: 0.01, 0.05, and 0.10.
-- When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts.
+- When using `pls_sem_power_graph`, you can set `theme = "min"` to apply a minimal white background, which may improve readability in certain contexts. The graphs use Okabe and Ito’s (2008) colour-blind-friendly colour palette.
 
 ## 📜 Examples
 ### A priori
@@ -109,10 +109,13 @@ With N = 68 and alpha = 0.05 you can detect effects as small as 0.30 with 80% po
  ```
 
 Easy-peasy...isn't it?! And it's all for free!
-The only thing I ask for is for the package to be cited properly, for instance like this:
+The only thing we ask for is for the package to be cited properly, for instance, like this:
 
-Ansani, A., & Rinallo, E. (2025). _PLS-SEM-power_ (Version 1.0) [R package / Shiny App].
+ - Ansani, A., & Rinallo, E. (2025). _PLS-SEM-power_ (Version 1.0.0) [R package / Shiny App].
 
+and the relative preprint:
+
+ - Ansani, A., & Rinallo, E. (2025). PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs (Version 1). _arXiv_. https://doi.org/10.48550/ARXIV.2511.14546
 
 ## 🌐 Shiny App
 Woo! What was that?! I was about to forget! `plssempower` is also available on the internet as a Shiny App. You don't have to download the R package necessarily. You can just run your PLS-SEM power analyses the old-fashioned point-and-clicky way. Here's the link, have fun! https://aleansani.shinyapps.io/pls-sem-power/
@@ -120,11 +123,16 @@ Woo! What was that?! I was about to forget! `plssempower` is also available on t
 Please note: it might take some time to load on the first access, that's entirely normal.
 
 ## 📚 References
+Ansani, A., & Rinallo, E. (2025). PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs (Version 1). _arXiv_. https://doi.org/10.48550/ARXIV.2511.14546
+
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
 
 Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs. _Evaluation Review, 19_(5), 547–556.
 
 Dong, N., & Maynard, R. (2013). PowerUp!: A Tool for Calculating Minimum Detectable Effect Sizes and Minimum Required Sample Sizes. _Journal of Research on Educational Effectiveness, 6_(1), 24–67.
+
+Okabe, M., & Ito, K. (2008). Color universal design (CUD): How to make figures and presentations that are friendly
+to colorblind people. https://jfly.uni-koeln.de/color/#pallet (Original work published 2002)
 
 
 ## 🆘 Help & Troubleshooting
