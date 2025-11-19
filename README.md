@@ -125,7 +125,7 @@ Please note: it might take some time to load on the first access, that's entirel
 ## 📚 References
 Ansani, A., & Rinallo, E. (2025). PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs (Version 1). _arXiv_. https://doi.org/10.48550/ARXIV.2511.14546
 
-Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261.
+Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261. https://cits.tamiu.edu/kock/pubs/journals/2018/Kock_Hadaya_2018_ISJ_SampleSizePLS.pdf
 
 Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs. _Evaluation Review, 19_(5), 547–556.
 
