@@ -8,7 +8,8 @@ pls_sem_power(
   method = c("sensitivity", "a priori"),
   N = NULL,
   MDES = NULL,
-  alpha = 0.05
+  alpha = 0.05,
+  tails = 1
 )
 }
 \arguments{
@@ -19,6 +20,13 @@ pls_sem_power(
 \item{MDES}{Minimum detectable effect size (required for a priori)}
 
 \item{alpha}{Significance level: one of 0.01, 0.05, or 0.10}
+
+\item{tails}{Number of tails: 1 (default) or 2
+#' @details
+By default, the function performs a one-tailed calculation, following
+the formulation proposed by Kock and Hadaya (2018). Setting `tails = 2`
+performs a two-tailed calculation, using the corresponding critical value
+for the specified significance level.}
 }
 \value{
 Printed result

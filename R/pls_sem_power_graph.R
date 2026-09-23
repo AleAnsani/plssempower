@@ -1,26 +1,51 @@
+utils::globalVariables("SampleSize")
+
 #' Plot graph for PLS-SEM power analysis or sensitivity
 #'
 #' @param method "a priori" (compute sample size) or "sensitivity" (compute MDES)
 #' @param MDES Minimum Detectable Effect Size (required if method = "a priori")
 #' @param N Sample size (required if method = "sensitivity")
 #' @param alpha Significance level. Must be one of 0.01, 0.05, 0.10
+#' @param tails Number of tails: 1 (default) or 2
+#' @param theme Plot theme: "abyss" (default) or "min"
 #'
 #' @importFrom ggplot2 ggplot aes geom_line geom_point geom_vline geom_hline
 #' @importFrom ggplot2 scale_y_continuous scale_x_continuous coord_cartesian labs theme
 #' @importFrom ggplot2 element_text
 #' @importFrom ggplot2 annotate
 #' @importFrom see theme_abyss
-#'
+#' @importFrom stats qnorm
+#' @importFrom rlang .data
+
 #' @return A ggplot object
 #' @export
-pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alpha = 0.05, theme = "abyss") {
+
+pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alpha = 0.05, tails = 1, theme = "abyss") {
+
   # Validate alpha
-  alpha_map <- c("0.01" = 3.168, "0.05" = 2.486, "0.1" = 2.123)
+  # Validate alpha
   alpha_str <- as.character(alpha)
-  if (!(alpha_str %in% names(alpha_map))) {
+
+  if (!(alpha_str %in% c("0.01", "0.05", "0.1"))) {
     stop("alpha must be one of: 0.01, 0.05, 0.10")
   }
-  selected_constant <- alpha_map[[alpha_str]]
+
+  # Validate tails
+  if (!tails %in% c(1, 2)) {
+    stop("tails must be either 1 or 2")
+  }
+
+  # Calculate the critical value
+  z_alpha <- if (tails == 1) {
+    qnorm(1 - as.numeric(alpha_str))
+  } else {
+    qnorm(1 - as.numeric(alpha_str) / 2)
+  }
+
+  z_power <- qnorm(0.80)
+
+  selected_constant <- z_alpha + z_power
+
   chosen_theme <- if (theme == "min") ggplot2::theme_minimal() else see::theme_abyss()
 
   if (method == "a priori") {
@@ -32,7 +57,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
     break_step <- ceiling(ylim_max / 10 / 10) * 10
     data <- data.frame(MDES = mdes_values, SampleSize = sample_size_values)
 
-    ggplot(data, aes(x = MDES, y = SampleSize)) +
+    ggplot(data, aes(x = MDES, y = .data$SampleSize)) +
       geom_line(color = "#f0e442", size = 1) +
       geom_point(color = "#f0e442", size = 2) +
       geom_vline(xintercept = MDES, color = "#f0e442", linetype = "dotted", size = 1.25) +
@@ -45,7 +70,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       chosen_theme +
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 0.15, y = ylim_max * 0.9,
-                 label = paste0("Sample size ≈ ", ceiling(target_y)),
+                 label = paste0("Sample size ~ ", ceiling(target_y)),
                  color = "#f0e442", size = 5, hjust = 0)
 
   } else if (method == "sensitivity") {
@@ -70,7 +95,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL, alph
       chosen_theme +
       theme(text = element_text(size = 13), plot.title = element_text(hjust = 0.5))+
       annotate("text", x = 10, y = mdes_max * 0.9,
-               label = paste0("MDES ≈ ", round(selected_constant / sqrt(N), 2)),
+               label = paste0("MDES ~ ", round(selected_constant / sqrt(N), 2)),
                color = "#d55e00", size = 5, hjust = 0)
 
   } else {

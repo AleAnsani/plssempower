@@ -9,6 +9,7 @@ pls_sem_power_graph(
   MDES = NULL,
   N = NULL,
   alpha = 0.05,
+  tails = 1,
   theme = "abyss"
 )
 }
@@ -20,6 +21,10 @@ pls_sem_power_graph(
 \item{N}{Sample size (required if method = "sensitivity")}
 
 \item{alpha}{Significance level. Must be one of 0.01, 0.05, 0.10}
+
+\item{tails}{Number of tails: 1 (default) or 2}
+
+\item{theme}{Plot theme: "abyss" (default) or "min"}
 }
 \value{
 A ggplot object
