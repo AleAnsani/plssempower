@@ -9,7 +9,7 @@ We’ve all been there. Well, not exactly "all", to be fair...
 Say hello to `plssempower`, an R package designed to make power analysis for PLS-SEM models fast, transparent, and reproducible.
 Using the inverse square root method introduced by [Kock and Hadaya (2018)]([url](https://cits.tamiu.edu/kock/pubs/journals/2018/Kock_Hadaya_2018_ISJ_SampleSizePLS.pdf)), this package allows you to:
 
-- Compute the required sample size for a given effect size (_a priori_)
+- Compute the required sample size for a given Minimum Detectable Effect Size (MDES) (_a priori_)
 - Compute the Minimum Detectable Effect Size (MDES) for a given sample (_sensitivity_)
 - Visualise your results with clear, (slightly) customisable graphs.
 
@@ -42,20 +42,29 @@ Where:
 - `pα` is a constant depending on the significance level (α = 0.01, 0.05, 0.10),
 - `pmin` is the path coefficient with minimum magnitude expected to be significant.
 
+By default, `pls_sem_power()` uses a **one-tailed calculation**, following the formulation proposed by Kock and Hadaya (2018). Starting from version 1.1.0, the `tail` (or `tails`) argument specifies the number of tails used in the calculation:
+
+- `tails = 1` (default): one-tailed calculation, using the critical value corresponding to α.
+- `tails = 2`: two-tailed calculation, using the critical value corresponding to α/2 in each tail.
+
+For a more detailed discussion on the use of one-tailed and two-tailed tests in PLS-SEMs, see Kock (2015).
+
+The `alpha` argument accepts three values: 0.01, 0.05, and 0.10.
+
 ## 🔧 Usage
 
 ```r
 # Compute the required sample size for a given MDES
-pls_sem_power(method = "a priori", MDES = 0.2, alpha = 0.05)
+pls_sem_power(method = "a priori", MDES = 0.2, alpha = 0.05, tail = 1)
 
 # Compute MDES for a given sample size
-pls_sem_power(method = "sensitivity", N = 63, alpha = 0.05)
+pls_sem_power(method = "sensitivity", N = 63, alpha = 0.05, tail = 1)
 
 # Generate graph (a priori)
-pls_sem_power_graph(method = "a priori", MDES = 0.2, alpha = 0.05)
+pls_sem_power_graph(method = "a priori", MDES = 0.2, alpha = 0.05, tail = 1)
 
 # Generate graph (sensitivity)
-pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05)
+pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05, tail = 1)
 ```
 _Notes_:
 - The `alpha` argument accepts only three values: 0.01, 0.05, and 0.10.
@@ -69,20 +78,32 @@ In this case, you would conduct an **_a priori_ power analysis** to assess the m
 
 All you need to run is
 ```r
-pls_sem_power_graph(method = "a priori", MDES = 0.5, alpha = 0.05)
+pls_sem_power_graph(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 1)
 ```
-This graph will appear, clearly showing that you would need at least **25 participants** to observe such an effect with 80% power 
+This graph will appear, clearly showing that you would need at least **25 participants** to detect such an effect with 80% power using a **one-tailed test**. 
 <img width="1715" height="1000" alt="image" src="https://github.com/user-attachments/assets/03e11165-17c3-4c58-8380-8ab21af7c471" />
 
 
 If you're not interested in the graph, but you just need to have the computation done, then you simply need to run
  ```r
-pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05)
+pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 1)
 ```
 And you'll receive this message
  ```r
-To detect an effect of 0.5 with 80% power at alpha = 0.05 you need at least 25 observations.
+To detect an effect of 0.5 with 80% power at alpha = 0.05 using a one-tailed test, you need at least 25 observations.
  ```
+
+
+If you don't have a specific hypothesis about the direction (positive or negative) of the effect (see Kock, 2015), you can perform a **two-tailed calculation** by setting:
+
+ ```r
+pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 2)
+```
+And you'll receive this message
+ ```r
+To detect an effect of 0.5 with 80% power at alpha = 0.05 using a two-tailed test, you need at least 32 observations.
+ ```
+
 
 ### Sensitivity
 Let's now assume that you have already collected your sample, prior to any power analysis (Aargh! Naughty researcher!). You have painstakingly gathered 68 participants, and you're starting to wonder what the smallest effect size is that you could detect with 80% power.
@@ -91,34 +112,34 @@ In this case, you would conduct a **_sensitivity_ power analysis** to assess the
 
 All you need to run is
 ```r
-pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05)
+pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05, tail = 1)
 ```
 Note that the function works identically; you simply need to substitute the `method` (i.e., `sensitivity` instead of `a priori`) and provide the `N` argument instead of `MDES`.
 
-This graph will appear, telling you that you can detect effects larger than **0.30** with 80% power 
+This graph will appear, telling you that you can detect effects larger than **0.30** with 80% power using a **one-tailed test**.
 <img width="1715" height="1000" alt="image" src="https://github.com/user-attachments/assets/3f289151-39b5-4219-acf4-6ca0fc4d6db8" />
 
 
 Again, if you're rushing and don't really care about the graph, then you simply need to type
  ```r
-pls_sem_power(method = "sensitivity", N = 68, alpha = 0.05)
+pls_sem_power(method = "sensitivity", N = 68, alpha = 0.05, tail = 1)
 ```
 And you'll receive this message
  ```r
-With N = 68 and alpha = 0.05 you can detect effects as small as 0.30 with 80% power
+With N = 68 and alpha = 0.05 using a one-tailed test, you can detect effects as small as 0.3 with 80% power.
  ```
 
 Easy-peasy...isn't it?! And it's all for free!
 The only thing we ask for is for the package to be cited properly, for instance, like this:
 
- - Ansani, A., & Rinallo, E. (2025). _PLS-SEM-power_ (Version 1.0.0) [R package / Shiny App].
+ - Ansani, A., & Rinallo, E. (2026). _PLS-SEM-power_ (Version 1.1.0) [R package / Shiny App].
 
-and the relative preprint:
+and the related preprint:
 
  - Ansani, A., & Rinallo, E. (2025). PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs (Version 1). _arXiv_. https://doi.org/10.48550/ARXIV.2511.14546
 
 ## 🌐 Shiny App
-Woo! What was that?! I was about to forget! `plssempower` is also available on the internet as a Shiny App. You don't have to download the R package necessarily. You can just run your PLS-SEM power analyses the old-fashioned point-and-clicky way. Here's the link, have fun! https://aleansani.shinyapps.io/pls-sem-power/
+Woo! What was that?! I was about to forget! `plssempower` is also available online as a Shiny App. You don't have to download the R package necessarily. You can just run your PLS-SEM power analyses the old-fashioned point-and-clicky way. Here's the link, have fun! https://aleansani.shinyapps.io/pls-sem-power/
 
 Please note: it might take some time to load on the first access, that's entirely normal.
 
@@ -126,6 +147,8 @@ Please note: it might take some time to load on the first access, that's entirel
 Ansani, A., & Rinallo, E. (2025). PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs (Version 1). _arXiv_. https://doi.org/10.48550/ARXIV.2511.14546
 
 Kock, N., & Hadaya, P. (2018). Minimum sample size estimation in PLS‐SEM: The inverse square root and gamma‐exponential methods. _Information Systems Journal, 28_(1), 227–261. https://cits.tamiu.edu/kock/pubs/journals/2018/Kock_Hadaya_2018_ISJ_SampleSizePLS.pdf
+
+Kock, N. (2015). One-tailed or two-tailed P values in PLS-SEM? _International Journal of eCollaboration, 11_(2), 1-7. https://cits.tamiu.edu/kock/pubs/journals/2015JournalIJeC2/Kock_2015_IJeC_OneTwoTailedPLSSEM.pdf
 
 Bloom, H. S. (1995). Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs. _Evaluation Review, 19_(5), 547–556.
 
