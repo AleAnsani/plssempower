@@ -1,4 +1,8 @@
-# PLS-SEM-power
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f64bb6b0-aff8-4a37-adb7-c2ef36e8d48f" alt="PLS-SEM-power logo" width="300">
+</p>
+
+# PLS-SEM-power 
 
 Stressed about sample size in your Partial Least Squares Structural Equation Model?
 Planning a PLS-SEM, but unsure how many participants you need?
@@ -14,6 +18,7 @@ Using the inverse square root method introduced by [Kock and Hadaya (2018)]([url
 - Visualise your results with clear, (slightly) customisable graphs.
 
 All in one function. No more guessing. No more excuses.
+
 
 ## ⚙️ Install from GitHub
 The installation is pretty easy. Make sure to run this code:
