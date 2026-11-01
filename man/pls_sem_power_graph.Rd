@@ -10,6 +10,7 @@ pls_sem_power_graph(
   N = NULL,
   alpha = 0.05,
   tails = 1,
+  power = 0.8,
   theme = "abyss"
 )
 }
@@ -24,7 +25,10 @@ pls_sem_power_graph(
 
 \item{tails}{Number of tails: 1 (default) or 2}
 
-\item{theme}{Plot theme: "abyss" (default) or "min"}
+\item{power}{Desired statistical power (default = 0.80).
+Must be a numeric value strictly between 0 and 1.}
+
+\item{theme}{Plot theme: "abyss" (default), "min" or "pr" (publication-ready)}
 }
 \value{
 A ggplot object

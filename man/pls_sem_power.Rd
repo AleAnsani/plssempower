@@ -9,7 +9,8 @@ pls_sem_power(
   N = NULL,
   MDES = NULL,
   alpha = 0.05,
-  tails = 1
+  tails = 1,
+  power = 0.8
 )
 }
 \arguments{
@@ -21,7 +22,10 @@ pls_sem_power(
 
 \item{alpha}{Significance level: one of 0.01, 0.05, or 0.10}
 
-\item{tails}{Number of tails: 1 (default) or 2
+\item{tails}{Number of tails: 1 (default) or 2}
+
+\item{power}{Desired statistical power (default = 0.8)
+Must be between 0 and 1.
 #' @details
 By default, the function performs a one-tailed calculation, following
 the formulation proposed by Kock and Hadaya (2018). Setting `tails = 2`

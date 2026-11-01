@@ -1,33 +1,27 @@
 Package: plssempower
 Type: Package
 Title: Power and Sensitivity Analysis for PLS-SEM
-Version: 1.1.0
-Authors@R: c(
+Version: 1.2.0
+Authors@R: 
     person(
       given = "Alessandro",
       family = "Ansani",
       email = "alessandro.a.ansani@jyu.fi",
       role = c("aut", "cre", "cph"),
       comment = c(ORCID = "0000-0002-0657-5732")
-    ),
-    person(
-      given = "Elena Sofia",
-      family = "Rinallo",
-      email = "elena.rinallo@uniroma3.it",
-      role = "ctb",
-      comment = c(ORCID = "0000-0002-2457-424X")
     )
- )
 Description: This package provides functions and graphical tools to perform
     power analysis and sensitivity analysis for Partial Least Squares Structural
     Equation Models (PLS-SEM). Based on the inverse square root method described
     by Kock and Hadaya (2018), it allows researchers to estimate required sample
     sizes or Minimum Detectable Effect Sizes (MDES). A Shiny App is available
     online to perform the same computations.
-License: CC BY-NC 4.0
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Imports: 
+Depends:
+    R (>= 4.1.0)
+Imports:
     ggplot2,
     see,
     rlang
