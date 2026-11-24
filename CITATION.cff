@@ -11,6 +11,7 @@ abstract: >-
   statistical power. A companion Shiny App performs the same computations
   online.
 version: 1.3.0
+doi: "10.5281/zenodo.24517635"
 authors:
   - family-names: Ansani
     given-names: Alessandro

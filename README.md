@@ -147,7 +147,7 @@ You'll end up with nothing less than this fancy graph!
 Easy-peasy...isn't it?! And it's all for free!
 The only thing we ask for is for the package to be cited properly, for instance, like this:
 
- - Ansani, A. (2026). _PLS-SEM-power_ (Version 1.3.0) [R package / Shiny App].
+ - Ansani, A. (2026). _PLS-SEM-power_ (Version 1.3.0) [R package / Shiny App]. Zenodo. https://doi.org/10.5281/zenodo.24517635
 
 and the related preprint:
 
