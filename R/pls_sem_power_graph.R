@@ -7,6 +7,7 @@ utils::globalVariables("SampleSize")
 #' @param N Sample size (required if method = "sensitivity")
 #' @param alpha Significance level. Must be one of 0.01, 0.05, 0.10
 #' @param tails Number of tails: 1 (default) or 2
+#' @param tail Optional alias for \code{tails} (1 or 2)
 #' @param power Desired statistical power (default = 0.80).
 #' Must be a numeric value strictly between 0 and 1.
 #' @param theme Plot theme: "abyss" (default), "min" or "pr" (publication-ready)
@@ -24,7 +25,15 @@ utils::globalVariables("SampleSize")
 
 pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL,
                                 alpha = 0.05, tails = 1, power = 0.80,
-                                theme = "abyss") {
+                                theme = "abyss", tail = NULL) {
+
+  # Support tail as an explicit alias for tails
+  if (!is.null(tail)) {
+    if (!missing(tails) && tails != tail) {
+      stop("Please specify either 'tails' or 'tail', not both with conflicting values.")
+    }
+    tails <- tail
+  }
 
   # Validate alpha
   alpha_str <- as.character(alpha)
@@ -106,6 +115,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL,
 
   if (method == "a priori") {
     if (is.null(MDES)) stop("Please provide a value for MDES.")
+    check_MDES(MDES)
     mdes_values <- seq(0.05, 1, by = 0.025)
     sample_size_values <- (selected_constant / mdes_values)^2
     target_y <- (selected_constant / MDES)^2
@@ -152,6 +162,7 @@ pls_sem_power_graph <- function(method = "a priori", MDES = NULL, N = NULL,
 
   } else if (method == "sensitivity") {
     if (is.null(N)) stop("Please provide a value for N.")
+    check_N(N)
 
     if (N <= 10) {
       warning(

@@ -47,7 +47,7 @@ Where:
 - `pα` is a constant depending on the significance level (α = 0.01, 0.05, 0.10) and the desired level of statistical power (1 – β),
 - `pmin` is the path coefficient with minimum magnitude expected to be significant.
 
-By default, `pls_sem_power()` uses a **one-tailed calculation**, following the formulation proposed by Kock and Hadaya (2018). Starting from version 1.1.0, the `tail` (or `tails`) argument specifies the number of tails used in the calculation:
+By default, `pls_sem_power()` uses a **one-tailed calculation**, following the formulation proposed by Kock and Hadaya (2018). Starting from version 1.1.0, the `tails` argument (with `tail` also accepted as an explicit alias) specifies the number of tails used in the calculation:
 
 - `tails = 1` (default): one-tailed calculation, using the critical value corresponding to α.
 - `tails = 2`: two-tailed calculation, using the critical value corresponding to α/2 in each tail.
@@ -62,16 +62,16 @@ The `power` argument accepts all values between 0 and 1, with 0.80 as the defaul
 
 ```r
 # Compute the required sample size for a given MDES
-pls_sem_power(method = "a priori", MDES = 0.2, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power(method = "a priori", MDES = 0.2, alpha = 0.05, tails = 1, power = .8)
 
 # Compute MDES for a given sample size
-pls_sem_power(method = "sensitivity", N = 63, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power(method = "sensitivity", N = 63, alpha = 0.05, tails = 1, power = .8)
 
 # Generate graph (a priori)
-pls_sem_power_graph(method = "a priori", MDES = 0.2, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power_graph(method = "a priori", MDES = 0.2, alpha = 0.05, tails = 1, power = .8)
 
 # Generate graph (sensitivity)
-pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power_graph(method = "sensitivity", N = 63, alpha = 0.05, tails = 1, power = .8)
 ```
 _Graphical Note_:
 - When using `pls_sem_power_graph`, you can set `theme = "min"` (or, starting from version 1.2.0, `theme = "pr"`) to make a publication-ready graph with a white background and dark grey elements. The default graphs use Okabe and Ito’s (2008) colour-blind-friendly colour palette.
@@ -84,7 +84,7 @@ In this case, you would conduct an **_a priori_ power analysis** to assess the m
 
 All you need to run is
 ```r
-pls_sem_power_graph(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power_graph(method = "a priori", MDES = 0.5, alpha = 0.05, tails = 1, power = .8)
 ```
 This graph will appear, clearly showing that you would need at least **25 participants** to detect such an effect with 80% power using a **one-tailed test**. 
 <img width="5000" height="2500" alt="PLS-SEM_apriori" src="https://github.com/user-attachments/assets/5ff95d73-c3be-419c-aca6-aec91c86ce86" />
@@ -92,7 +92,7 @@ This graph will appear, clearly showing that you would need at least **25 partic
 
 If you're not interested in the graph, but you just need to have the computation done, then you simply need to run
  ```r
-pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tails = 1, power = .8)
 ```
 And you'll receive this message
  ```r
@@ -103,7 +103,7 @@ To detect an effect of 0.5 with 80 % power at alpha = 0.05 using a one-tailed te
 If you don't have a specific hypothesis about the direction (positive or negative) of the effect (see Kock, 2015), you can perform a **two-tailed calculation** by setting:
 
  ```r
-pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tail = 2, power = .8)
+pls_sem_power(method = "a priori", MDES = 0.5, alpha = 0.05, tails = 2, power = .8)
 ```
 And you'll receive this message
  ```r
@@ -118,7 +118,7 @@ In this case, you would conduct a **_sensitivity_ power analysis** to assess the
 
 All you need to run is
 ```r
-pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05, tails = 1, power = .8)
 ```
 Note that the function works identically; you simply need to substitute the `method` (i.e., `sensitivity` instead of `a priori`) and provide the `N` argument instead of `MDES`.
 
@@ -128,7 +128,7 @@ This graph will appear, telling you that you can detect effects larger than **0.
 
 Again, if you're rushing and don't really care about the graph, then you simply need to type
  ```r
-pls_sem_power(method = "sensitivity", N = 68, alpha = 0.05, tail = 1, power = .8)
+pls_sem_power(method = "sensitivity", N = 68, alpha = 0.05, tails = 1, power = .8)
 ```
 And you'll receive this message
  ```r
@@ -137,7 +137,7 @@ With N = 68 and alpha = 0.05 using a one-tailed test, you can detect effects as 
 
 Should you need to publish this graph, we recommend setting `theme = min` or `theme = pr` (`pr` stands for publication-ready):
 ```r
-pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05, tail = 1, power = .8, theme="pr")
+pls_sem_power_graph(method = "sensitivity", N = 68, alpha = 0.05, tails = 1, power = .8, theme="pr")
 ```
 You'll end up with nothing less than this fancy graph!
 <img width="5000" height="2500" alt="PLS-SEM_sensitivity_pr" src="https://github.com/user-attachments/assets/9d12877b-e09e-496e-b9ef-e0fe685cd18c" />
@@ -147,7 +147,7 @@ You'll end up with nothing less than this fancy graph!
 Easy-peasy...isn't it?! And it's all for free!
 The only thing we ask for is for the package to be cited properly, for instance, like this:
 
- - Ansani, A. (2026). _PLS-SEM-power_ (Version 1.2.0) [R package / Shiny App].
+ - Ansani, A. (2026). _PLS-SEM-power_ (Version 1.3.0) [R package / Shiny App].
 
 and the related preprint:
 

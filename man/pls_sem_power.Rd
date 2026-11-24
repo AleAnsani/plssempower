@@ -10,7 +10,8 @@ pls_sem_power(
   MDES = NULL,
   alpha = 0.05,
   tails = 1,
-  power = 0.8
+  power = 0.8,
+  tail = NULL
 )
 }
 \arguments{
@@ -25,16 +26,19 @@ pls_sem_power(
 \item{tails}{Number of tails: 1 (default) or 2}
 
 \item{power}{Desired statistical power (default = 0.8)
-Must be between 0 and 1.
-#' @details
-By default, the function performs a one-tailed calculation, following
-the formulation proposed by Kock and Hadaya (2018). Setting `tails = 2`
-performs a two-tailed calculation, using the corresponding critical value
-for the specified significance level.}
+Must be between 0 and 1.}
+
+\item{tail}{Optional alias for \code{tails} (1 or 2)}
 }
 \value{
 Printed result
 }
 \description{
 Power or Sensitivity Calculation for PLS-SEM
+}
+\details{
+By default, the function performs a one-tailed calculation, following
+the formulation proposed by Kock and Hadaya (2018). Setting `tails = 2`
+performs a two-tailed calculation, using the corresponding critical value
+for the specified significance level.
 }

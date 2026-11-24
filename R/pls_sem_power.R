@@ -5,9 +5,10 @@
 #' @param MDES Minimum detectable effect size (required for a priori)
 #' @param alpha Significance level: one of 0.01, 0.05, or 0.10
 #' @param tails Number of tails: 1 (default) or 2
+#' @param tail Optional alias for \code{tails} (1 or 2)
 #' @param power Desired statistical power (default = 0.8)
 #' Must be between 0 and 1.
-#' #' @details
+#' @details
 #' By default, the function performs a one-tailed calculation, following
 #' the formulation proposed by Kock and Hadaya (2018). Setting `tails = 2`
 #' performs a two-tailed calculation, using the corresponding critical value
@@ -21,9 +22,18 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
                           MDES = NULL,
                           alpha = 0.05,
                           tails = 1,
-                          power = 0.80) {
+                          power = 0.80,
+                          tail = NULL) {
 
   method <- match.arg(method)
+
+  # Support tail as an explicit alias for tails
+  if (!is.null(tail)) {
+    if (!missing(tails) && tails != tail) {
+      stop("Please specify either 'tails' or 'tail', not both with conflicting values.")
+    }
+    tails <- tail
+  }
 
   # Validate alpha
   alpha <- as.character(alpha)
@@ -58,6 +68,7 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
 
   if (method == "a priori") {
     if (is.null(MDES)) stop("You must provide MDES for power analysis")
+    check_MDES(MDES)
     required_N <- (selected_constant / MDES)^2
 
     if (ceiling(required_N) <= 10) {
@@ -75,6 +86,7 @@ pls_sem_power <- function(method = c("sensitivity", "a priori"),
 
   if (method == "sensitivity") {
     if (is.null(N)) stop("You must provide N for sensitivity analysis")
+    check_N(N)
     detectable_mdes <- selected_constant / sqrt(N)
 
     if (N <= 10) {

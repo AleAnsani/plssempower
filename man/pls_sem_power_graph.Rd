@@ -11,7 +11,8 @@ pls_sem_power_graph(
   alpha = 0.05,
   tails = 1,
   power = 0.8,
-  theme = "abyss"
+  theme = "abyss",
+  tail = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ pls_sem_power_graph(
 Must be a numeric value strictly between 0 and 1.}
 
 \item{theme}{Plot theme: "abyss" (default), "min" or "pr" (publication-ready)}
+
+\item{tail}{Optional alias for \code{tails} (1 or 2)}
 }
 \value{
 A ggplot object

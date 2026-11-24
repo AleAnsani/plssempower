@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+type: software
+title: "plssempower: Power and Sensitivity Analysis for PLS-SEM"
+abstract: >-
+  Functions and graphical tools to perform power analysis and sensitivity
+  analysis for Partial Least Squares Structural Equation Models (PLS-SEM),
+  based on the inverse square root method of Kock and Hadaya (2018). The
+  package estimates required sample sizes or Minimum Detectable Effect Sizes
+  (MDES) for user-defined significance levels, one- or two-tailed tests and
+  statistical power. A companion Shiny App performs the same computations
+  online.
+version: 1.3.0
+authors:
+  - family-names: Ansani
+    given-names: Alessandro
+    email: alessandro.a.ansani@jyu.fi
+    orcid: "https://orcid.org/0000-0002-0657-5732"
+license: GPL-3.0-or-later
+repository-code: "https://github.com/AleAnsani/plssempower"
+url: "https://aleansani.shinyapps.io/pls-sem-power/"
+keywords:
+  - PLS-SEM
+  - power analysis
+  - sample size
+  - minimum detectable effect size
+  - inverse square root method
+  - R package
+  - Shiny
+references:
+  - type: article
+    title: "PLS-SEM-power: A Shiny App and R package for Computing Required Sample Size and Minimum Detectable Effect Size in PLS-SEMs"
+    authors:
+      - family-names: Ansani
+        given-names: Alessandro
+      - family-names: Rinallo
+        given-names: Elena
+    year: 2025
+    journal: arXiv
+    doi: "10.48550/ARXIV.2511.14546"
